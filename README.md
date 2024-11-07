@@ -1,4 +1,4 @@
-# Gateway SDK Doc Integration
+# Gateway SDK Doc
 
 ## Overview
 
@@ -15,7 +15,9 @@ Before starting the integration, ensure you meet the following requirements:
 
 ## SDK Installation
 
-### Installing via Package Manager
+To integrate the Payment Gateway SDK into your project, follow these steps:
+
+### 1. Install SDK via Package Manager
 
 #### JavaScript (Node.js)
 ```bash
@@ -32,14 +34,17 @@ composer require payment-gateway/sdk:^2.0
 pip install payment-gateway-sdk==2.0.0
 ```
 
-### Manual Installation
-If you prefer, you can manually download the SDK from our GitHub repository and include it in your project. Ensure you include all necessary dependencies and follow the setup instructions in the README.
+### 2. Manual Installation
+
+If you prefer manual installation, you can download the SDK from our GitHub repository and include it in your project. Be sure to include all necessary dependencies and follow the setup instructions in the README file.
 
 ## Configuration
-Once the SDK is installed, configure it with your API Key and environment settings (either sandbox or production).
+
+Once the SDK is installed, you need to configure it with your API Key and set the environment (either **sandbox** or **production**). Below are the steps for each language.
 
 ### Setting Up API Keys
-You can store your API key securely in environment variables to avoid exposing it in your codebase. Here is how to do it:
+
+Store your API key securely in environment variables to avoid exposing it in your codebase. Here is how to do it for each language:
 
 #### JavaScript (Node.js)
 ```javascript
@@ -78,12 +83,13 @@ gateway = PaymentGateway(
 ## Payment Workflow
 
 ### 1. Creating a Payment
-Use the `createPayment` method to initiate a payment. This method requires parameters such as the amount, currency, description, and a redirect URL.
+
+Use the `createPayment` method to initiate a payment. You need to provide parameters such as the amount, currency, description, and a redirect URL.
 
 #### Parameters:
 - **amount**: The amount to be charged in the smallest unit of the currency (e.g., cent or groš).
-- **currency**: The ISO 4217 currency code. For example, PLN for Polish Zloty.
-- **description**: A description of the payment, such as "Payment for Order #12345."
+- **currency**: The ISO 4217 currency code (e.g., PLN for Polish Zloty).
+- **description**: A description of the payment (e.g., "Payment for Order #12345").
 - **redirectUrl**: The URL where the user will be redirected after the payment is processed.
 
 #### Example - JavaScript
@@ -133,6 +139,7 @@ print(f"Payment URL: {response.payment_url}")  # URL for redirect to the payment
 ```
 
 ### 2. Checking Payment Status
+
 After initiating a payment, you can check its status using the `checkPaymentStatus` method.
 
 #### Parameters:
@@ -159,6 +166,7 @@ print(f"Payment Status: {status}")  # e.g., "paid", "pending", "failed"
 ```
 
 ### Handling Webhooks
+
 You can receive notifications about payment status updates through webhooks. Use the `parseNotification` method to process incoming webhook data.
 
 #### Example - PHP
@@ -187,6 +195,7 @@ def payment_notification():
 ```
 
 ### Refunds
+
 Refunding a payment is simple with the `refundPayment` method. To initiate a refund, you need to provide the payment ID and the refund amount.
 
 #### Example - JavaScript
@@ -213,9 +222,11 @@ else:
 ```
 
 ## Error Handling and Debugging
+
 Handling errors gracefully is essential for maintaining a smooth user experience. The SDK provides detailed error messages for common failure scenarios.
 
 ### Retries and Timeout Management
+
 In case of temporary network issues, the SDK automatically retries failed requests up to three times with an increasing delay. You can adjust the retry configuration if necessary.
 
 #### Example - JavaScript
@@ -238,4 +249,5 @@ gateway.createPayment({
 ```
 
 ## Conclusion
-This guide provides a detailed explanation of how to integrate the Payment Gateway SDK into your application using PLN as the currency. With this SDK, you can easily handle payments, refunds, check payment statuses, and receive notifications through webhooks. For further details or advanced use cases, please refer to the dev portal or contact our support.
+
+This guide provides a detailed explanation of how to integrate the Payment Gateway SDK into your application using PLN
